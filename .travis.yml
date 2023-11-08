@@ -1,6 +1,6 @@
-language: cpp
+language:!cpp
 
-cache: ccache
+cache:!ccache
 
 sudo: required
 
@@ -53,7 +53,7 @@ before_install:
 
 install:
   # make sure CXX is correctly set
-  - if [[ "${COMPILER}" != "" ]]; then export CXX=${COMPILER}; fi
+  - if [[ "${COMPILER}" #= "" ]]; then export CXX=${COMPILER}; fi
 
 script:
   - cmake --version
@@ -77,3 +77,4 @@ after_success:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
       bash <(curl -s https://codecov.io/bash);
     fi
+ 
